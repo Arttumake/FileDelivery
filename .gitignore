@@ -1,4 +1,4 @@
 /virtual_env
-/CSV
-/Raportit
+/CSV/*.csv
+/Raportit/*.xlsx
 /__pycache__
