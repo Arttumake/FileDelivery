@@ -24,16 +24,16 @@ a subdirectory and moves the CSV-file to another.
 """
 
 # templates used in this script
-uniquant_template = "uniquant.xlsx"
-puriste_template = "puriste.xlsx"
-sulate_template = "sulate.xlsx"
-puriste_sulate_template = "puriste_sulate.xlsx"
+uniquant_template = "Uniquant.xlsx"
+puriste_template = "Puriste.xlsx"
+sulate_template = "Sulate.xlsx"
+puriste_sulate_template = "Puriste_Sulate.xlsx"
 
 # variable defining the location of dropdown values
 dropdown = "Taul1!B4:B1048576"
 
 # name of the määritysrajat-excel (only needed for puriste/sulate)
-määritys_rajat_xl = "määritysrajat.xlsx"
+määritys_rajat_xl = "Määritysrajat.xlsx"
 
 csv_dir = "CSV" # CVS directory name
 excel_dir = "Raportit" # Excel report directory name
