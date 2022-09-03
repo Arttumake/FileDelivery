@@ -10,7 +10,7 @@ from pathlib import Path
 
 p = Path(Path.cwd(), 'Raportit')
 
-XRF_FOLDER = 'xrf_thermo_script'
+XRF_FOLDER = 'xrf_thermo'
 ALLOWED_EXTENSIONS = {'csv', 'xlsx'}
 
 app = Flask(__name__)
