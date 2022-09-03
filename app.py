@@ -5,7 +5,7 @@ from flask import Flask
 from flask import url_for, request, render_template, flash, send_file, redirect
 
 import subprocess
-import os
+import os, glob
 from pathlib import Path
 
 p = Path(Path.cwd(), 'Raportit')
@@ -33,21 +33,21 @@ def upload_file():
     if request.method == 'POST':
         file = request.files['file']
         filename = file.filename
-        if filename == '':
-            flash("No file selected")
-            return redirect('upload')
         if file and allowed_file(file.filename):
             filename = file.filename
             if 'xlsx' in file.filename:
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
             elif 'csv' in file.filename:
+                to_be_deleted = list(p.glob('*.xlsx'))
+                for f in to_be_deleted:
+                    os.remove(f)
                 file.save(filename)
                 subprocess.call(['python', 'xrf.py'], cwd=app.config['UPLOAD_FOLDER'])
                 excels = list(p.glob('*.xlsx'))
                 latest = max(excels, key=os.path.getctime)
                 return send_file(latest)
         else:
-            flash("Choose csv type file to upload")
+            flash("Choose csv type file to upload", category="error")
             return redirect('upload')
     else:
         return redirect('upload')
