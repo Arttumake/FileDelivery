@@ -1,14 +1,14 @@
 from asyncio import subprocess
-from urllib import response
-from wsgiref.util import request_uri
 from flask import Flask
-from flask import url_for, request, render_template, flash, send_file, redirect
+from flask import request, render_template, flash, send_file, redirect
+from dotenv import load_dotenv
 
 import subprocess
-import os, glob
+import os
 from pathlib import Path
 
 p = Path(Path.cwd(), 'Raportit')
+configs = load_dotenv()
 
 XRF_FOLDER = 'xrf_thermo'
 ALLOWED_EXTENSIONS = {'csv', 'xlsx'}
@@ -16,7 +16,7 @@ ALLOWED_EXTENSIONS = {'csv', 'xlsx'}
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = XRF_FOLDER
 app.config['DOWNLOAD_FOLDER'] = p
-app.secret_key = b"\x92\xcb=\x0bT/,\xff\x8d\xd4'|\xa7/IY"
+app.secret_key = os.environ.get("APP_KEY")
 
 
 def allowed_file(filename):

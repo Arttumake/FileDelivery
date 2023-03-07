@@ -2,3 +2,4 @@
 /CSV/*.csv
 /Raportit/*.xlsx
 /__pycache__
+.env
